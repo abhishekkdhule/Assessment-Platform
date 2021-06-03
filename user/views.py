@@ -41,7 +41,7 @@ def login(request):
         print(user,request.POST)
         if user!=None:
             auth.login(request,user)
-            print()
+            
             if user.is_recruiter and is_recruiter=='1':
                 print("in the recruiter")
                 return redirect('recruiter')
@@ -64,8 +64,3 @@ def logout(request):
     return redirect('login')
 
 
-def recruitersPage(request):
-    return render(request,'user/recruiter.html')
-
-def studentsPage(request):
-    return render(request,'user/recruiter.html')

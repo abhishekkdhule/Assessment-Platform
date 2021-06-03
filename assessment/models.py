@@ -32,7 +32,7 @@ class Question(models.Model):
         return "A"+str(self.assessment.id)
 
 
-class AssessmentScores(models.Model):
+class AssessmentScore(models.Model):
     assessment=models.ForeignKey(Assessment,on_delete=models.CASCADE)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     is_pending=models.BooleanField(default=False)

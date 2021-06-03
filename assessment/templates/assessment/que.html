@@ -1,0 +1,25 @@
+{% include 'assessment/base.html' %}
+
+{% block content %}'
+
+<div class="container">
+    <h1 class="mt-4 text-center">Questions of Assessment</h1>
+    {% for q in questions %}
+    <div class="row p-2 mt-2">
+        <div>
+            <p class="font-weight-bold">Q. {{q.que}}</p>
+            <div class="ml-3">
+            <p class="m-0">a. {{q.op_a}}</p>
+            <p class="m-0">b. {{q.op_b}}</p>
+            <p class="m-0">c. {{q.op_c}}</p>
+            <p>d. {{q.op_d}}</p>
+            <p class="font-weight-bold m-0">Marks assigned: {{q.marks_assigned}}</p>
+            <p class="font-weight-bold ">Correct Answer: {{q.correct_choice}}</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+
+{% endblock%}
