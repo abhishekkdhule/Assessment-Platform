@@ -15,15 +15,26 @@ def recruitersPage(request):
 
 def createAssessment(request,assgK):
     assmObj=Assessment.objects.get(id=assgK)
+    ques=Question.objects.filter(assessment=assmObj)
     form=QuestionForm()
+    if request.method=="POST":
+        f=QuestionForm(request.POST)
+        if(f.is_valid()):
+            queObj=f.save(commit=False)   
+            queObj.assessment=assmObj
+            queObj.save() 
+            assmObj.max_score+=queObj.marks_assigned
+            assmObj.save()
+            return redirect('newassm',assmObj.id)
     context={
         "assessment":assmObj,
-        "form":form
+        "form":form,
+        "questions":ques
     }
     return render(request,'assessment/newassm.html',context)
 
 def questionsPage(request,assgK):
     assessment=Assessment.objects.get(id=assgK)
     questions=Question.objects.filter(assessment=assessment)
-    return render(request,'assessment/que.html',{"questions":questions})
+    return render(request,'assessment/que.html',{"questions":questions,"assessment":assessment})
 

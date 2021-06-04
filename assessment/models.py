@@ -20,11 +20,11 @@ class Question(models.Model):
         ('d', 'option d'),
     ]
     assessment=models.ForeignKey(Assessment,on_delete=models.CASCADE)
-    que=models.CharField(max_length=500)
-    op_a=models.CharField(max_length=300)
-    op_b=models.CharField(max_length=300)
-    op_c=models.CharField(max_length=300)
-    op_d=models.CharField(max_length=300)
+    question=models.CharField(max_length=500)
+    option_a=models.CharField(max_length=300)
+    option_b=models.CharField(max_length=300)
+    option_c=models.CharField(max_length=300)
+    option_d=models.CharField(max_length=300)
     marks_assigned=models.DecimalField(max_digits=4,decimal_places=2)
     correct_choice=models.CharField(max_length=1,choices=answer_choice,default='a')
 
