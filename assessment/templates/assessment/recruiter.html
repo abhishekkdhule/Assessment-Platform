@@ -8,9 +8,38 @@
             <h3>Hello {{ user.name}}!</h3>
         </div>
         <div class="col text-right">
-            <button class="btn btn-primary">Create Assessment</button>
+                <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Create Assessment
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Assessment title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form method="POST" action="{% url 'recruiter' %}">{% csrf_token %}
+                    <div class="mt-2 mb-2">
+                        <label class="form-label">Title:</label>
+                        <input class="form-control" type="text" name="assessment" placeholder="Assessent no. 1">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
         </div>
     </div>
+
+
     <h3 class="text-center mt-4">List of Previous Assessments</h3>
     {% for assg in assessments %}
     <div class="row p-2 m-2 border">
