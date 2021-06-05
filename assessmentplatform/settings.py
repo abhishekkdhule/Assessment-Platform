@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'assessment',
+    'student'
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR,'user/templates'),
-        os.path.join(BASE_DIR,'assessment/templates'),],
+        os.path.join(BASE_DIR,'assessment/templates'),
+        os.path.join(BASE_DIR,'student/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -9,18 +9,19 @@ def register(request):
         name=request.POST['name']
         pass1=request.POST['password']
         pass2=request.POST['conf-password']
-        is_recruiter=request.POST['is_recruiter']
-     
-        if(pass1==pass2 and len(pass1)>8 and pass1.isalnum()):
+        if request.POST['is_recruiter']=='1':
+            is_recruiter=True
+        else:
+            is_recruiter=False
+        if(pass1==pass2 and len(pass1)>8):
             if User.objects.filter(email=email).exists():
-                print('user id exists')
                 messages.info(request,'User id exists')
                 return redirect('register')
             else:
-                user=User.objects.create_user(email=email,name=name,password=pass1,is_recruiter=is_recruiter)
+                user=User.objects.create_user(email=email,password=pass1)
+                user.name=name
+                user.is_recruiter=is_recruiter
                 user.save()
-                print('user created')
-                # messages.info(request,'User Created') 
                 return redirect('login')
         else:
             messages.info(request,'1.password length should be>8 | 2.both password should be same | 3.password must be alpha numeric')
@@ -34,21 +35,17 @@ def login(request):
     if request.method=="POST":
 
         print(request)
-        email=request.POST['email']
-        password=request.POST['password']
+        email=request.POST.get('email')
+        password=request.POST.get('password')
         is_recruiter=request.POST['is_recruiter']
         user=SettingsBackend.authenticate(email=email,password=password)
-        print(user,request.POST)
         if user!=None:
             auth.login(request,user)
             
             if user.is_recruiter and is_recruiter=='1':
-                print("in the recruiter")
                 return redirect('recruiter')
-                print("recruiter logged in ")
             if (not user.is_recruiter) and is_recruiter=='0':
-                return redirect('recruiter')
-                print("recruiter logged in ")
+                return redirect('student')
             else:
                 messages.info(request,'Invalid Credentials inner')
                 return redirect('login')
