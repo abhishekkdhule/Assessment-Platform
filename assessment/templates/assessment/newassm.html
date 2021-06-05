@@ -1,17 +1,54 @@
 {% include 'assessment/base.html' %}
 
 {% block content %}
-<h1  class="text-center" style="margin-top:50px;">
-    {{assessment.title}}
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Add Question
-      </button>
-</h1>
 <div class="container">
-    <div class="row">
+
+    <h1  class="text-center"  style="margin-top:70px;" > {{assessment.title}}</h1>
+    <div class="d-flex justify-content-between">
+        
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Question
+        </button>
+        <!-- assign to students -->
+        
         <!-- Button trigger modal -->
-  
-  <!-- Modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign">
+            Assign
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="assign" tabindex="-1" aria-labelledby="assignLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="assignlLabel">Assign</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" style="overflow-y: scroll; max-height: 200px;">
+                        <ul class="list-group">
+                            <form action="{% url 'assign' assessment.id %}" method="POST">{% csrf_token %}
+                                {% for student in students %}
+                                <li class="list-group-item">
+                                    <input class="form-check-input me-1" type="checkbox" value="{{student.id}}" name="id{{student.id}}" >
+                                    {{student.email}}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Assign</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>
+    
+<div class="container mt-4">
+    <div class="row">
+
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">

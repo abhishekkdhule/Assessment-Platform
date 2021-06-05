@@ -35,7 +35,7 @@ class Question(models.Model):
 class AssessmentScore(models.Model):
     assessment=models.ForeignKey(Assessment,on_delete=models.CASCADE)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    is_pending=models.BooleanField(default=False)
+    is_pending=models.BooleanField(default=True)
     score_obtained=models.DecimalField(max_digits=6,decimal_places=2,default=0.0)
 
     def __str__(self):

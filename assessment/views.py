@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from . models import Assessment,Question,AssessmentScore
 from . forms import QuestionForm
+from user.models import User
 # Create your views here.
 
 def recruitersPage(request):
@@ -16,6 +17,7 @@ def recruitersPage(request):
 def createAssessment(request,assgK):
     assmObj=Assessment.objects.get(id=assgK)
     ques=Question.objects.filter(assessment=assmObj)
+    students=User.objects.filter(is_recruiter=False)
     form=QuestionForm()
     if request.method=="POST":
         f=QuestionForm(request.POST)
@@ -29,9 +31,26 @@ def createAssessment(request,assgK):
     context={
         "assessment":assmObj,
         "form":form,
-        "questions":ques
+        "questions":ques,
+        "students":students
     }
     return render(request,'assessment/newassm.html',context)
+
+
+def assignToStudents(request,assgK):
+    print(dict(request.POST))
+    for key,val in dict(request.POST).items():
+        try:
+            userid=(int(val[0]))
+        except:
+            continue
+
+        
+        assgObj=Assessment.objects.get(id=assgK)
+        userObj=User.objects.get(id=userid)
+        AssessmentScore.objects.create(assessment=assgObj,user=userObj)
+    return redirect('newassm',assgK)
+
 
 def questionsPage(request,assgK):
     assessment=Assessment.objects.get(id=assgK)
