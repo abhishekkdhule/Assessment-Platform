@@ -1,0 +1,29 @@
+{% include 'student/base.html' %}
+{% block content %}
+<div class="container" style="margin-top: 60px;">
+    <h3 class="text-center">{{assessment.title}} (Total marks: {{assessment.max_score}})</h3>
+    <hr>
+    <form action="{% url 'quiz' assessment.id %}" method="POST">{% csrf_token %}
+        {% for que in questions %}
+        <p class="mb-1 fw-bold">Q{{forloop.counter}}. {{que.question}} <span>({{que.marks_assigned}} points)</span> </p>
+        <div class="ms-3">
+
+            <p>
+                <input type="radio" name="{{que.id}}" value="a"> {{que.option_a}} 
+            </p>
+            <p>
+                <input type="radio" name="{{que.id}}" value="b"> {{que.option_b}}
+            </p>
+            <p>
+                <input type="radio" name="{{que.id}}" value="c"> {{que.option_c}}
+            </p>
+            <p>
+                <input type="radio" name="{{que.id}}" value="d"> {{que.option_d}}
+            </p>
+        </div>
+        <hr>
+        {% endfor %}
+            <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}
