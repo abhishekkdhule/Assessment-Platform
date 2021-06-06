@@ -2,16 +2,18 @@ from django.shortcuts import render,redirect
 from user.models import User
 from assessment.models import AssessmentScore
 from assessment.models import Question,Assessment,AssessmentScore
+from django.http import Http404
 
 # This is a hompage of student
 def studentPage(request):
-    assessments=AssessmentScore.objects.filter(user=request.user)
-    print(assessments)
+    pendingAssessment=(AssessmentScore.objects.filter(user=request.user)).filter(is_pending=True)
+    completedAssessment=(AssessmentScore.objects.filter(user=request.user)).filter(is_pending=False)
     context={
-        "assessments":assessments
+        "pendingAssessment":pendingAssessment,
+        "completedAssessment":completedAssessment,
     }
     return render(request,'student/student.html',context=context)
-from django.http import Http404
+
 # This is a assessment page of student
 def studentsAssessment(request,assgK):
     assgObj=Assessment.objects.get(id=assgK)
@@ -26,7 +28,6 @@ def studentsAssessment(request,assgK):
             assgScoreObj.is_pending=False
             assgScoreObj.score_obtained=totalScore
             assgScoreObj.save()
-            print(request.POST)
             return redirect('student')
         context={
             "questions":questions,
