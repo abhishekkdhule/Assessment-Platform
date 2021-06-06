@@ -28,6 +28,14 @@ Once you have added all the questions assign it to students.
 
 ### Step 6 : Now login as a student
 Once you have a student accout, login as a student and you will see you pending and previous assessments.
-![
+![student's homepage](https://github.com/abhishekkdhule/Assessment-Platform/blob/main/images/studenthome.JPG)
+
+### Step 7 : Solve the pending assessment 
+Select one of the pending assessment and solve it, after copleting you will be redirected to homepage where you can see you score
+![assessment](https://github.com/abhishekkdhule/Assessment-Platform/blob/main/images/solve.JPG)
+
+### Step 8 : Response of the assessment
+Login as recruiter and check the response of the assessment.
+![response](https://github.com/abhishekkdhule/Assessment-Platform/blob/main/images/response.JPG)
 
  
