@@ -4,6 +4,7 @@ from django.contrib.auth.models import (AbstractBaseUser,
                                         BaseUserManager,
                                         PermissionsMixin)
 
+#User manager model
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None,**kwargs):
         if email is None:
@@ -29,7 +30,7 @@ class UserManager(BaseUserManager):
         return user
 
     
-
+#Overriding Dafault User model
 class User(AbstractBaseUser,PermissionsMixin):
     email=models.CharField(max_length=255,unique=True,db_index=True)
     name=models.CharField(max_length=255)

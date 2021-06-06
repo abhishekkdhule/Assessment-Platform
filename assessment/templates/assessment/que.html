@@ -3,12 +3,12 @@
 {% block content %}
 
 <div class="container">
-    <h2 class="mt-6 text-center">Questions of Assessment (Max Score: {{assessment.max_score}})</h2>
+    <h3 class="mt-2 text-center">{{assessment.title}} (Max Score: {{assessment.max_score}})</h3>
     {% for q in questions %}
     
     <div class="row p-2 mt-2">
         <div>
-            <p class="fw-bold">Q. {{q.question}}</p>
+            <p class="fw-bold">Q{{forloop.counter}}. {{q.question}}</p>
             <div class="ms-3">
             <p class="m-0">a. {{q.option_a}}</p>
             <p class="m-0">b. {{q.option_b}}</p>

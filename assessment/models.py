@@ -1,7 +1,7 @@
 from django.db import models
 from user.models import User
 
-
+#Model of an assessment
 class Assessment(models.Model):
     title=models.CharField(max_length=200)
     createdBy=models.ForeignKey(User,on_delete=models.CASCADE)
@@ -11,7 +11,7 @@ class Assessment(models.Model):
     def __str__(self):
         return self.title
 
-
+#model of Question 
 class Question(models.Model):
     answer_choice = [
         ('a', 'option a'),
@@ -31,7 +31,7 @@ class Question(models.Model):
     def __str__(self):
         return "A"+str(self.assessment.id)
 
-
+#Model for assessment score and to assign assessment to specific user
 class AssessmentScore(models.Model):
     assessment=models.ForeignKey(Assessment,on_delete=models.CASCADE)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
@@ -40,5 +40,8 @@ class AssessmentScore(models.Model):
 
     def __str__(self):
         return "A"+str(self.assessment.id)+" U"+str(self.user.id)
+
+    class Meta:
+        unique_together=("assessment","user")
     
     

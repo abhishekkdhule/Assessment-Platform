@@ -5,10 +5,8 @@ from . models import User
 class SettingsBackend(BaseBackend):
 
     def authenticate(email=None, password=None):
-        print("authenticate called",email)
         try:
             user = User.objects.get(email=email)
-            print("user",user)
             if(check_password(password,user.password)):
                 print("checked")
                 return user

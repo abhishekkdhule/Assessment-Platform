@@ -1,0 +1,32 @@
+{% include 'assessment/base.html' %}
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Responses</h1>
+    <div class="row">
+        <table class="table table-light table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for response in responses %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{response.user.name}}</td>
+                <td>{{response.user}}</td>
+                {% if response.is_pending %}
+                <td>pending</td>
+                {% else %}
+                <td>{{response.score_obtained}}</td>
+                {% endif %}
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+{% endblock %}

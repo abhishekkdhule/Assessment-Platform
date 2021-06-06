@@ -9,11 +9,11 @@
 
 </head>
 
-<body style="background-color: blueviolet;">
-    <div class="container mt-2" >
+<body style="background-color: rgb(216, 216, 216);">
+    <div class="container mt-4" >
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-4 p-4 " style="background-color: white;">
+            <div class="col-md-4 p-4" style="background-color: white;">
                 <h3 class="text-center">Sign-up</h3>
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -28,27 +28,24 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             
                     <form enctype="multipart/form-data" class="form" method="POST" action="{% url 'register' %}">{% csrf_token %}
-                        <div class="form-group">
-                        <label for="userid">Email</label>
+                        
+                        <label for="userid" class="mt-2">Email</label>
                         <input type="text" class="form-control" name="email" placeholder="Email id">
-                        </div>
-                        <div class="form-group">
-                            <label for="firstname">Name</label>
-                            <input type="text"  class="form-control" name="name" placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="password">
-                        </div>
-                        <div class="form-group">
-                            <label for="userid">Confirm password</label>
-                            <input type="password" class="form-control" name="conf-password" placeholder="confirm password">
-                        </div>
+           
+                        <label for="firstname" class="mt-2">Name</label>
+                        <input type="text"  class="form-control" name="name" placeholder="Name">
+
+                        <label for="password" class="mt-2">Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="password">
+
+                        <label for="userid" class="mt-2">Confirm password</label>
+                        <input type="password" class="form-control" name="conf-password" placeholder="confirm password">
+         
                             {% for message in messages %}
                             <p style="color: red;">{{message}}<p>
                             {% endfor %}
                             <input type="hidden" name="is_recruiter" value="1">
-                        <button class="btn btn-primary"  type="submit" >Sign up</button><br>
+                        <button class="btn btn-primary mt-3"  type="submit" >Sign up</button><br>
                         <a href="{% url 'login' %}">&#8592; Back to login page</a>
                         </form>
                     </div>
@@ -56,27 +53,25 @@
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         
                     <form enctype="multipart/form-data" class="form" method="POST" action="{% url 'register' %}">{% csrf_token %}
-                        <div class="form-group">
-                        <label for="userid">Email</label>
+          
+                        <label for="userid" class="mt-2">Email</label>
                         <input type="text" class="form-control" name="email" placeholder="Email id">
-                        </div>
-                        <div class="form-group">
-                            <label for="firstname">Name</label>
-                            <input type="text"  class="form-control" name="name" placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="password">
-                        </div>
-                        <div class="form-group">
-                            <label for="userid">Confirm password</label>
-                            <input type="password" class="form-control" name="conf-password" placeholder="confirm password">
-                        </div>
+        
+                        <label for="firstname" class="mt-2">Name</label>
+                        <input type="text"  class="form-control" name="name" placeholder="Name">
+    
+                        <label for="password" class="mt-2">Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="password">
+            
+                        <label for="userid" class="mt-2">Confirm password</label>
+                        <input type="password" class="form-control" name="conf-password" placeholder="confirm password">
+                        
                             {% for message in messages %}
                             <p style="color: red;">{{message}}<p>
                             {% endfor %}
-                            <input type="hidden" name="is_recruiter" value="0">
-                            <button class="btn btn-primary"  type="submit" >Sign up</button><br>
+                        <input type="hidden" name="is_recruiter" value="0">
+                        <button class="btn btn-primary mt-3" type="submit" >Sign up</button><br>
+
                             <a href="{% url 'login' %}">&#8592; Back to login page</a>
                         </form>
                     </div>
