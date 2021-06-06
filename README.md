@@ -1,9 +1,9 @@
 # Assessment-Platform
-This is a web application which consist two users:-
+This is a web application which consists two users:-
   * Recruiter
     * The recruiter can create assessments for students, each assessment will consist of MCQ based questions. He can further assign the assessments to students. He can even check the responses of students.
   * Student/someone who is in search of job
-    * The students will be able to solve the assessment which was assigned to them and can get their assessment score after completing assessment.
+    * The student will be able to solve the assessment which was assigned to him/her and can get his/her assessment score after completing assessment.
  
 ## Below steps shows how to use this application
 ### Step 1 : Login (as a recruiter)
