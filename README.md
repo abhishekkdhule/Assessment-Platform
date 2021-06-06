@@ -14,7 +14,7 @@ Once you have created an account proceed for logging in.
 Recruiters homepage consist of list of previous assessment where he can view, delete and see the responses of the assessments. He can also create new assessment.
 ![recruiter's homepage](https://github.com/abhishekkdhule/Assessment-Platform/blob/main/images/recruitersassg.JPG)
 
-### Step 3 : Create new assessment.=
+### Step 3 : Create new assessment
 For creating new assessment provide the title of the assessment.
 ![new assesssment](https://github.com/abhishekkdhule/Assessment-Platform/blob/main/images/newassg.JPG)
 
