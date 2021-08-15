@@ -5,7 +5,7 @@ This is a web application which consists two users:-
   * Student/someone who is in search of job
     * The student will be able to solve the assessment which was assigned to him/her and can get his/her assessment score after completing assessment.
  
-## DB architechture
+## DB architecture
 * In AssessmentScore table, "user" and "assessment" are unique together
 ![db arch](https://github.com/abhishekkdhule/Assessment-Platform/blob/main/images/db%20arch.JPG)
 
