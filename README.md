@@ -4,6 +4,10 @@ This is a web application which consists two users:-
     * The recruiter can create assessments for students, each assessment will consist of MCQ based questions. He can further assign the assessments to students. He can even check the responses of students.
   * Student/someone who is in search of job
     * The student will be able to solve the assessment which was assigned to him/her and can get his/her assessment score after completing assessment.
+   
+Sample credentials:
+* Recruiter: email: assessmentplatform@gmail.com & password: assessment
+* Student: email: student@gmail.com & password: student@123
  
 ## DB architecture
 * In AssessmentScore table, "user" and "assessment" are unique together
