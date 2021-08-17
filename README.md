@@ -8,10 +8,7 @@ This is a web application which consists two users:-
 Sample credentials:
 * Recruiter: email: assessmentplatform@gmail.com & password: assessment
 * Student: email: student@gmail.com & password: student@123
- 
-## DB architecture
-* In AssessmentScore table, "user" and "assessment" are unique together
-![db arch](https://github.com/abhishekkdhule/Assessment-Platform/blob/main/images/db%20arch.JPG)
+
 
 ## Below steps shows how to use this application
 ### Step 1 : Login (as a recruiter)
